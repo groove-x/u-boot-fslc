@@ -51,11 +51,11 @@
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	"bootdelay=1\0" \
-	"image=zImage\0" \
+	"image=/kernel/normal/zImage\0" \
 	"console=ttymxc0\0" \
 	"fdt_high=0xffffffff\0" \
 	"initrd_high=0xffffffff\0" \
-	"fdt_file=imx6ull-14x14-evk.dtb\0" \
+	"fdt_file=/kernel/normal/imx6ull-14x14-evk.dtb\0" \
 	"fdt_addr=0x83000000\0" \
 	"boot_fdt=try\0" \
 	"mmcdev="__stringify(CONFIG_SYS_MMC_ENV_DEV)"\0" \
@@ -84,8 +84,8 @@
 
 #define CONFIG_BOOTCOMMAND \
 	"mmc dev ${mmcdev}; " \
-	"loadimage; " \
-	"mmcboot"
+	"run loadimage; " \
+	"run mmcboot"
 
 /* Miscellaneous configurable options */
 #define CONFIG_SYS_MEMTEST_START	0x80000000
