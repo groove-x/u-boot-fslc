@@ -81,11 +81,19 @@
 		"else " \
 			"bootz; " \
 		"fi;\0" \
+	"loadbootenv_addr=0x80000000\0" \
+	"bootdev=1\0" \
+	"partid=auto\0" \
+	"bootenv=uEnv.txt\0" \
+	"custombootcmd=echo Failed to load uEnv.txt; run loadimage; run mmcboot\0" \
+	"uEnvtxt_existence_test=test -e mmc ${bootdev}:${partid} /${bootenv}\0" \
+	"loadbootenv=load mmc $bootdev:$partid ${loadbootenv_addr} ${bootenv}\0" \
+	"importbootenv=echo Importing environment from uEnv.txt; env import -t ${loadbootenv_addr} ${filesize}\0" \
+	"uenvboot=if run uEnvtxt_existence_test; then run loadbootenv; run importbootenv; fi; run custombootcmd\0" \
 
 #define CONFIG_BOOTCOMMAND \
 	"mmc dev ${mmcdev}; " \
-	"run loadimage; " \
-	"run mmcboot"
+	"run uenvboot"
 
 /* Miscellaneous configurable options */
 #define CONFIG_SYS_MEMTEST_START	0x80000000
