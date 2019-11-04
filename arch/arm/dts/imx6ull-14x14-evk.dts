@@ -298,6 +298,12 @@
 			>;
 		};
 
+		pinctrl_pwm3: pwm3grp {
+			fsl,pins = <
+				MX6UL_PAD_GPIO1_IO04__PWM3_OUT   0x110b0
+			>;
+		};
+
 		pinctrl_qspi: qspigrp {
 			fsl,pins = <
 				MX6UL_PAD_NAND_WP_B__QSPI_A_SCLK      0x70a1
@@ -442,6 +448,12 @@
 &pwm1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm1>;
+	status = "okay";
+};
+
+&pwm3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_pwm3>;
 	status = "okay";
 };
 
