@@ -71,6 +71,12 @@
 	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
 	"mmcboot=echo Booting from mmc ...; " \
+        "pwm init 0; " \
+        "pwm set 0 100000 100000; " \
+        "pwm enable 0; " \
+        "pwm init 2; " \
+        "pwm set 2 30000 100000; " \
+        "pwm enable 2; " \
 		"run mmcargs; " \
 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
 			"if run loadfdt; then " \
