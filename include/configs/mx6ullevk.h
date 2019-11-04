@@ -54,7 +54,7 @@
 #define CONFIG_SYS_MMC_IMG_LOAD_PART	1
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"bootdelay=1\0" \
+	"bootdelay=0\0" \
 	"image=/kernel/normal/zImage\0" \
 	"console=ttymxc0\0" \
 	"fdt_high=0xffffffff\0" \
