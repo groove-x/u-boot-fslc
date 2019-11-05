@@ -92,12 +92,11 @@ static int do_pwm(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 			printf("pwm: failed to config pwm\n", argc);
 			return ret;
 		}
-		printf("pwm: pin %s (pwm %i) duty: %d, period: %d\n", str_pwm, pwm, duty, period);
+		printf("pwm: no. %i: duty=%d, period=%d\n", str_pwm, pwm, duty, period);
 		break;
 	default:
 		goto show_usage;
 	}
-	printf("pwm: done!!!\n");
 	return 0;
 }
 
