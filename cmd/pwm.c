@@ -33,7 +33,7 @@ static int do_pwm(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 	int duty, period;
 	enum pwm_cmd sub_cmd;
 	const char *str_cmd, *str_pwm = NULL;
-	int i, ret;
+	int ret;
 
 	if (argc < 2)
  show_usage:
