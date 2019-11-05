@@ -68,14 +68,14 @@ static int do_pwm(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 	case PWM_INIT:
 		ret = pwm_init(pwm, 0, 0);
 		if (ret) {
-			printf("pwm: failed to init pwm\n", argc);
+			printf("pwm: failed to init pwm\n");
 			return ret;
 		}
 		break;
 	case PWM_ENABLE:
 		ret = pwm_enable(pwm);
 		if (ret) {
-			printf("pwm: failed to enable pwm\n", argc);
+			printf("pwm: failed to enable pwm\n");
 			return ret;
 		}
 		break;
@@ -89,10 +89,10 @@ static int do_pwm(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 		period = simple_strtoul(argv[2], NULL, 10);
 		ret = do_pwm_set(pwm, duty, period);
 		if (ret) {
-			printf("pwm: failed to config pwm\n", argc);
+			printf("pwm: failed to config pwm\n");
 			return ret;
 		}
-		printf("pwm: no. %i: duty=%d, period=%d\n", str_pwm, pwm, duty, period);
+		printf("pwm: no. %d: duty=%d, period=%d\n", pwm, duty, period);
 		break;
 	default:
 		goto show_usage;
