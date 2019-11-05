@@ -102,5 +102,6 @@ static int do_pwm(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 
 U_BOOT_CMD(pwm, 5, 0, do_pwm,
 	   "control pwm pins",
-	   "<init|enable|set> <pin>\n"
-	   "    - init/enable/set the specified pin");
+	   "init <pin>\n"
+	   "pwm set <pin> <duty> <period>\n"
+	   "pwm enable <pin>\n");
