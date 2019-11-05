@@ -41,6 +41,16 @@ static void setup_iomux_uart(void)
 	imx_iomux_v3_setup_multiple_pads(uart1_pads, ARRAY_SIZE(uart1_pads));
 }
 
+static iomux_v3_cfg_t const pwm_pads[] = {
+	MX6_PAD_GPIO1_IO08__PWM1_OUT | MUX_PAD_CTRL(NO_PAD_CTRL),
+	MX6_PAD_GPIO1_IO04__PWM3_OUT | MUX_PAD_CTRL(NO_PAD_CTRL),
+};
+
+static void setup_iomux_pwm(void)
+{
+	imx_iomux_v3_setup_multiple_pads(pwm_pads, ARRAY_SIZE(pwm_pads));
+}
+
 int board_mmc_get_env_dev(int devno)
 {
 	return devno;
@@ -54,6 +64,7 @@ int mmc_map_to_kernel_blk(int devno)
 int board_early_init_f(void)
 {
 	setup_iomux_uart();
+	setup_iomux_pwm();
 
 	return 0;
 }

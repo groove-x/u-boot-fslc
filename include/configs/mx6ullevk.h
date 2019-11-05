@@ -47,10 +47,14 @@
 #define CONFIG_SYS_I2C_SPEED		100000
 #endif
 
+/* PWM configs */
+#define CONFIG_PWM_IMX
+#define CONFIG_IMX6_PWM_PER_CLK	24000000
+
 #define CONFIG_SYS_MMC_IMG_LOAD_PART	1
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"bootdelay=1\0" \
+	"bootdelay=0\0" \
 	"image=/kernel/normal/zImage\0" \
 	"console=ttymxc0\0" \
 	"fdt_high=0xffffffff\0" \
@@ -67,6 +71,12 @@
 	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
 	"mmcboot=echo Booting from mmc ...; " \
+		"pwm init 0; " \
+		"pwm set 0 100000 100000; " \
+		"pwm enable 0; " \
+		"pwm init 2; " \
+		"pwm set 2 100000 100000; " \
+		"pwm enable 2; " \
 		"run mmcargs; " \
 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
 			"if run loadfdt; then " \
