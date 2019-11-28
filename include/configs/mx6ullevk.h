@@ -67,10 +67,16 @@
 	"mmcroot=" CONFIG_MMCROOT " rootwait rw\0" \
 	"mmcautodetect=yes\0" \
 	"mmcargs=setenv bootargs console=${console},${baudrate} " \
-		"root=${mmcroot}\0" \
+		"root=${mmcroot} ti=${ti}\0" \
 	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
 	"mmcboot=echo Booting from mmc ...; " \
+		"gpio input GPIO1_7; " \
+		"if test $? = 0; then " \
+			"env set ti 1; " \
+		"else " \
+			"env set ti 0; " \
+		"fi; " \
 		"pwm init 0; " \
 		"pwm set 0 100000 100000; " \
 		"pwm enable 0; " \
